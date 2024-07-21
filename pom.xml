@@ -30,6 +30,19 @@
    </repository>
 </distributionManagement>
 -->
+<!--
+Update in settings.xml.we can find in /etc/maven
+	<server>
+      <id>nexus-snapshots</id>
+      <username>admin</username>
+      <password>admin</password>
+   </server>
+   <server>
+      <id>nexus-releases</id>
+      <username>admin</username>
+      <password>admin</password>
+   </server>
+-->
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
