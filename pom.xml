@@ -10,14 +10,26 @@
   
   <properties>
 		
-    <sonar.host.url>http://18.138.81.149:9000/</sonar.host.url>
+   <!-- <sonar.host.url>http://18.138.81.149:9000/</sonar.host.url>
 		<sonar.login>admin</sonar.login>
 		<sonar.password>passw0rd</sonar.password>
+-->
 	<!--
 	  <sonar.login>squ_ca2e168184665e83ddff6cc18a2735321b565458</sonar.login>
 	-->
 	</properties>
- 
+<!--
+	<distributionManagement>
+   <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <url>http://54.147.191.217:8081/repository/maven-snapshots</url>
+   </snapshotRepository>
+  <repository>
+      <id>nexus-releases</id>
+      <url>http://54.147.191.217:8081/repository/maven-releases</url>
+   </repository>
+</distributionManagement>
+-->
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
