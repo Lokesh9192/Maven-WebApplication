@@ -10,7 +10,7 @@
   
   <properties>
 		
-   <sonar.host.url>http://54.226.21.225:9000/</sonar.host.url>
+   <sonar.host.url>http://52.91.96.196:9000/</sonar.host.url>
 		<sonar.login>admin</sonar.login>
 		<sonar.password>admin123</sonar.password>
 
@@ -22,11 +22,11 @@
 	<distributionManagement>
    <snapshotRepository>
       <id>nexus-snapshots</id>
-      <url>http://54.163.34.13:8081/repository/maven-snapshots</url>
+      <url>http://3.95.239.179:8081/repository/maven-snapshots</url>
    </snapshotRepository>
   <repository>
       <id>nexus-releases</id>
-      <url>http://54.163.34.13:8081/repository/maven-releases</url>
+      <url>http://3.95.239.179:8081/repository/maven-releases/</url>
    </repository>
 </distributionManagement>
 
