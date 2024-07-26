@@ -22,11 +22,11 @@
 	<distributionManagement>
    <snapshotRepository>
       <id>nexus-snapshots</id>
-      <url>http://54.87.56.82:8081/repository/maven-snapshots/</url>
+      <url>http://54.87.56.82:8081/repository/freestyle-snapshot/</url>
    </snapshotRepository>
   <repository>
       <id>nexus-releases</id>
-      <url>http://54.87.56.82:8081/repository/maven-releases/</url>
+      <url>http://54.87.56.82:8081/repository/freestyle-release/</url>
    </repository>
 </distributionManagement>
 
