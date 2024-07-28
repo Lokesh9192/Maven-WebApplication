@@ -1,0 +1,38 @@
+pipeline{
+    agent any
+    tools{
+        maven "Maven3.9.8"
+    }
+    triggers {
+  pollSCM '* * * * *'
+    }
+    options {
+  buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')
+  timestamps()
+}
+    stages{
+        stage('Git clone'){
+            steps{
+                git 'https://github.com/Lokesh9192/Maven-WebApplication.git'
+            }
+        }
+        stage('Build'){
+            steps{
+                sh "mvn clean package"
+            }
+        } 
+        stage('Sonar'){
+            steps{
+                sh "mvn sonar:sonar"
+            }
+        } 
+        stage('Tomcat'){
+            steps{
+                sshagent(['6c2b49e1-cfaa-4dde-b6f2-48ca2d015e78']) {
+                sh "scp -o StrictHostKeyChecking=no target/maven-web-app.war ec2-user@35.175.174.211:/opt/apache-tomcat-10.1.26/webapps/"
+                }
+            }
+        } 
+        
+    }
+}
