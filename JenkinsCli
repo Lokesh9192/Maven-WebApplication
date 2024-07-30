@@ -1,0 +1,38 @@
+echo " Belows are the Jobs present in Jenkins"
+
+java -jar jenkins-cli.jar -s http://23.22.166.90:8080/ -auth admin:118d01fc4c8437af200f8e0426e4a46ce8 list-jobs
+
+
+echo "              Build the Job     "
+echo "-----------------------------------------------------------"
+
+read jobName
+
+java -jar jenkins-cli.jar -s http://23.22.166.90:8080/ -auth admin:118d01fc4c8437af200f8e0426e4a46ce8 build $jobName
+
+echo "   Jenkins Version     "
+echo "------------------------"
+
+java -jar jenkins-cli.jar -s http://23.22.166.90:8080/ -auth admin:118d01fc4c8437af200f8e0426e4a46ce8 version
+
+echo "   Get the Job configurations    "
+echo "---------------------------------"
+
+read job
+
+java -jar jenkins-cli.jar -s http://23.22.166.90:8080/ -auth admin:118d01fc4c8437af200f8e0426e4a46ce8 get-job  $job > $job.xml
+
+echo " Create a Job "
+echo " -------------"
+
+read jobname
+
+java -jar jenkins-cli.jar -s http://23.22.166.90:8080/ -auth admin:118d01fc4c8437af200f8e0426e4a46ce8 create-job $jobname < Helloworld.xml
+
+echo " Below are jobs ENter which one to delete "
+echo "--------------------------------------------"
+java -jar jenkins-cli.jar -s http://23.22.166.90:8080/ -auth admin:118d01fc4c8437af200f8e0426e4a46ce8 list-jobs
+
+read deletejob
+
+java -jar jenkins-cli.jar -s http://23.22.166.90:8080/ -auth admin:118d01fc4c8437af200f8e0426e4a46ce8 delete-job $deletejob
