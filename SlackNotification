@@ -1,24 +1,28 @@
 node {
     try {
-        notifyBuild('STARTED')
+        sendSlackNotification('STARTED')
 
-        stage('Prepare code') {
-            echo 'do checkout stuff'
-        }
+        stage('CheckoutCode'){
+    git 'https://github.com/Lokesh9192/Maven-WebApplication.git'
+}
 
-        stage('Testing') {
-            echo 'Testing'
-            echo 'Testing - publish coverage results'
-        }
+stage('Build'){
+    sh "${mavenHome}/bin/mvn clean package"
+}
 
-        stage('Staging') {
-            echo 'Deploy Stage'
-        }
+stage('Sonar'){
+  sh "${mavenHome}/bin/mvn sonar:sonar"  
+}
 
-        stage('Deploy') {
-            echo 'Deploy - Backend'
-            echo 'Deploy - Frontend'
-        }
+stage('Nexus'){
+   sh "${mavenHome}/bin/mvn deploy" 
+}
+
+stage('Tomcat'){
+    sshagent(['6c2b49e1-cfaa-4dde-b6f2-48ca2d015e78']) {
+    sh "scp -o StrictHostKeyChecking=no target/maven-web-app.war ec2-user@54.196.135.119:/opt/apache-tomcat-10.1.26/webapps/"
+}
+}
 
   } catch (e) {
     // If there was an exception thrown, the build failed
@@ -26,11 +30,11 @@ node {
     throw e
   } finally {
     // Success or failure, always send notifications
-    notifyBuild(currentBuild.result)
+    sendSlackNotification(currentBuild.result)
   }
 }
 
-def notifyBuild(String buildStatus = 'STARTED') {
+def sendSlackNotification(String buildStatus = 'STARTED') {
   // build status of null means successful
   buildStatus =  buildStatus ?: 'SUCCESSFUL'
 
