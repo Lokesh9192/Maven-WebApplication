@@ -1,0 +1,28 @@
+JenkinsURL=`grep JenkinsURL jenkinsdetails.txt | cut -d "=" -f2`
+JenkinsUserName=`grep JenkinsUserName jenkinsdetails.txt | cut -d "=" -f2`
+JenkinsToken=`grep JenkinsToken jenkinsdetails.txt | cut -d "=" -f2`
+
+echo "1) Display jobs"
+echo "2) Display jenkins verison"
+echo "3) Build the Job "
+echo "4) Create a job"
+echo "5) delete the job"
+
+echo "Please enter the option "
+
+read option
+
+case $option in
+1) java -jar jenkins-cli.jar -s $JenkinsURL -auth $JenkinsUserName:$JenkinsToken list-jobs
+;;
+2) java -jar jenkins-cli.jar -s $JenkinsURL -auth $JenkinsUserName:$JenkinsToken version
+;;
+3) java -jar jenkins-cli.jar -s $JenkinsURL -auth $JenkinsUserName:$JenkinsToken build Helloworld
+;;
+4) java -jar jenkins-cli.jar -s $JenkinsURL -auth $JenkinsUserName:$JenkinsToken create-job HiJenkins < Helloworld.xml
+;;
+5) java -jar jenkins-cli.jar -s $JenkinsURL -auth $JenkinsUserName:$JenkinsToken delete-job HiJenkins 
+;;
+*)  echo " Please enter the correct option"
+;;
+esac
