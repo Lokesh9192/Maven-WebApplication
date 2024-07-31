@@ -1,0 +1,3 @@
+JenkinsURL=http://52.90.125.96:8080/
+JenkinsUserName=admin
+JenkinsToken=118d01fc4c8437af200f8e0426e4a46ce8 
