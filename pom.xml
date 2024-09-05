@@ -10,7 +10,7 @@
   
   <properties>
 		
-   <sonar.host.url>http://44.206.240.15:9000/</sonar.host.url>
+   <sonar.host.url>http://44.203.153.207:9000/</sonar.host.url>
 		<sonar.login>admin</sonar.login>
 		<sonar.password>sathwikaa</sonar.password>
 
