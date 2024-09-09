@@ -10,7 +10,7 @@
   
   <properties>
 		
-   <sonar.host.url>https://54.163.6.56:9000/</sonar.host.url>
+   <sonar.host.url>http://54.163.6.56:9000/</sonar.host.url>
 		<sonar.login>admin</sonar.login>
 		<sonar.password>sathwikaa</sonar.password>
 
